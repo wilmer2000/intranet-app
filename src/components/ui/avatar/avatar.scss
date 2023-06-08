@@ -1,0 +1,26 @@
+@import "../../../utils/styles/mixins";
+
+$avatar-size: 150px;
+
+.avatar-img {
+  max-width: $avatar-size;
+  margin: 0 auto $size-20;
+
+  img {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+}
+
+.avatar-description {
+  @include card-content();
+  text-align: center;
+}
+
+.avatar-title {
+  margin-top: 0;
+}
+.avatar-subtitle {
+  margin-bottom: 0;
+}

@@ -1,0 +1,36 @@
+@import "../../utils/styles/size";
+
+$avatar-size: 40px;
+
+.main-menu-image-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.main-menu-img {
+  width: $avatar-size;
+  height: $avatar-size;
+  border-radius: $avatar-size;
+  overflow: hidden;
+  flex: 0 0 1;
+  margin-right: $size-10;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: inline-block;
+  }
+}
+
+.main-menu-title {
+  flex: 0 0 1;
+
+  p {
+    margin: 0;
+  }
+}
+
+.main-menu-options {
+  display: none;
+}

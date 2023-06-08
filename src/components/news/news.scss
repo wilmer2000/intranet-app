@@ -1,0 +1,7 @@
+@import "../../utils/styles/mixins";
+@import "../../utils/styles/size";
+@import "../../utils/styles/colors";
+
+.news-content {
+  @include card-content();
+}

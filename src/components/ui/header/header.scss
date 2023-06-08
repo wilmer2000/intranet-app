@@ -1,0 +1,34 @@
+@import "../../../utils/styles/size";
+@import "../../../utils/styles/mixins";
+@import "../../../utils/styles/colors";
+
+$header-size: 70px;
+$logo-size: 50px;
+$input-search-size: 40px;
+$input-search-padding: 10px 25px;
+
+.header-content {
+  @include box-shadow(0,0);
+  padding: $size-10 $size-15;
+  height: $header-size;
+  background: $white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.navbar-logo {
+  width: $logo-size;
+  height: auto;
+  display: block;
+}
+
+.navbar-search-input {
+  border: solid 1px gray;
+  border-radius: $input-search-size;
+  display: block;
+  padding: $input-search-padding;
+  width: 100%;
+}

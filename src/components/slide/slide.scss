@@ -1,0 +1,32 @@
+@import "../../utils/styles/size";
+@import "../../utils/styles/colors";
+@import "../../utils/styles/mixins";
+
+$size-avatar: 200px;
+$margin-separator: 53px;
+
+.slide-content {
+  @include border-radius();
+  @include box-shadow();
+  padding: $size-15;
+  background-color: $purple-3;
+  position: relative;
+  margin-top: $margin-separator;
+  margin-bottom: $size-20;
+}
+
+.slide-avatar {
+  position: absolute;
+  display: block;
+  right: $size-15;
+  bottom: $size-15;
+  width: $size-avatar;
+}
+
+.slide-title {
+  margin: 0;
+  span {
+    font-size: 0.8em;
+    font-weight: $font-medium;
+  }
+}

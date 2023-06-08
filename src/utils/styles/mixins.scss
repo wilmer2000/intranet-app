@@ -1,0 +1,23 @@
+@import "./size";
+@import "./colors";
+// Mixin elements
+
+@mixin card-content {
+  @include border-radius();
+  @include box-shadow();
+  margin: 0 0 $size-20 0;
+  padding: $size-20;
+  background-color: $white;
+
+  > .card-title {
+    margin-top: 0;
+  }
+}
+
+@mixin border-radius($radius: $size-15) {
+  border-radius: $radius;
+}
+
+@mixin box-shadow($x-offset: 5px, $y-offset: 5px, $blur: 15px, $color: $gray-2) {
+  box-shadow: $x-offset $y-offset $blur $color;
+}

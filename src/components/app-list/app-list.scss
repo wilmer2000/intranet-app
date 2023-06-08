@@ -1,0 +1,47 @@
+@import "../../utils/styles/size";
+@import "../../utils/styles/size";
+@import "../../utils/styles/colors";
+@import "../../utils/styles/mixins";
+
+$item-size: 60px;
+$item-content-size: 90px;
+$icon-padding: 16px;
+
+.app-list-content {
+  @include card-content();
+}
+
+.app-list {
+  padding: 0;
+  margin: 0;
+  display: flex;
+
+  li {
+    list-style: none;
+    flex: 0 0 1;
+    text-align: center;
+    width: $item-content-size;
+  }
+
+  li + li {
+  }
+
+  a {
+    display: inline-block;
+  }
+
+  .app-icon-content {
+    background-color: $purple-3;
+    @include box-shadow();
+    @include border-radius();
+    width: $item-size;
+    height: $item-size;
+    margin: 0 auto $size-15;
+  }
+
+  .bi {
+    display: block;
+    font-size: 1.5em;
+    padding: $icon-padding;
+  }
+}
