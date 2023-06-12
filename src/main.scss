@@ -8,9 +8,11 @@
 // Utils import
 @import "./utils/styles/colors";
 @import "./utils/styles/size";
+@import "./utils/styles/mixins";
 
 // Reset
-$header-size: 80px;
+$input-size: 45px;
+$text-color: #34495e;
 
 * {
   box-sizing: border-box;
@@ -19,11 +21,18 @@ $header-size: 80px;
 a {
   text-decoration: none;
   cursor: pointer;
+  color: inherit;
+
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: $purple-2;
+  }
 }
 
-a:hover {
-  text-decoration: none;
-}
 
 
 body,
@@ -32,10 +41,46 @@ html {
   padding: 0;
   font-family: 'Roboto', sans-serif;
   font-weight: $font-lighter;
-  color: $black;
+  color: $text-color;
   background-color: $gray-3;
 }
 
-body {
-  padding-top: $header-size + 15px;
+.form-group {
+  .form-label {
+    display: block;
+    margin-bottom: $size-5;
+    font-weight: 400;
+  }
+
+  .form-input {
+    @include border-radius($size-10);
+    border: solid 1px $gray-1;
+    height: $input-size;
+    padding: $size-5 $size-10;
+    width: 100%;
+    font-weight: 100;
+  }
+
+  + .form-group {
+    margin-top: $size-20;
+  }
+}
+
+.btn {
+  @include border-radius($size-10);
+  height: $input-size;
+  padding: $size-5 $size-20;
+  border: 0;
+  color: $purple-1;
+
+  &.btn-full-width {
+    width: 100%;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.btn-default {
+    background-color: $purple-3;
+  }
 }

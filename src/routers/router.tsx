@@ -8,6 +8,7 @@ import HumanResourcesPage from "../pages/employer/human-resources/human-resource
 import TrainingPage from "../pages/employer/training/training-page.tsx";
 import DeliveryPage from "../pages/employer/delivery/delivery-page.tsx";
 import SupportPage from "../pages/employer/support/support-page.tsx";
+import LoginPage from "../pages/login/login-page.tsx";
 
 export const router: RemixRouter = createBrowserRouter([
     {
@@ -43,5 +44,9 @@ export const router: RemixRouter = createBrowserRouter([
                 element: <SupportPage/>
             }
         ]
+    },
+    {
+        path: '/login',
+        element: <LoginPage/>
     },
 ]);

@@ -1,4 +1,5 @@
 import {FC} from "react";
+import './container.scss'
 
 function Container({children}: FC | any) {
     return (
