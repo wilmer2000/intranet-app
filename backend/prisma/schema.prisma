@@ -11,17 +11,16 @@ generator client {
 }
 
 model User {
-  id        Int     @id @default(autoincrement())
-  email     String  @unique
-  firstName String
-  lastName  String
-  isAdmin   Boolean @default(false)
+  id       String @id @default(uuid())
+  username String @unique
+  password String
+  role     Role   @default(USER)
 }
 
-// enum Role {
-//   USER
-//   ADMIN
-// }
+enum Role {
+  USER
+  ADMIN
+}
 
 // model Employer {
 //   id        Int     @id @default(autoincrement())
