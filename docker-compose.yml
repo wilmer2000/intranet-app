@@ -9,6 +9,8 @@ services:
     restart: always # What to do if container crashes
     links:
       - backend
+    volumes:
+      - intranet-app:/frontend/
   # Create backend container
   backend:
     # Create backend container
@@ -21,6 +23,8 @@ services:
       - db
     depends_on:
       - db
+    volumes:
+      - intranet-app:/backend/
   # Create database container
   db:
     image: postgres:13-alpine3.18
@@ -36,3 +40,4 @@ services:
       - postgres-db:${POSTGRES_DATA_DIR}
 volumes:
   postgres-db:
+  intranet-app:

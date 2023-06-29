@@ -1,13 +1,29 @@
 import { Injectable } from "@nestjs/common";
-import { PrismaService } from "../prisma/prisma.service";
+
+// This should be a real class/interface representing a user entity
+export type User = any;
 
 @Injectable()
 export class UsersService {
-    constructor(private prisma: PrismaService) {
-    }
+    private readonly users = [
+        {
+            userId: 1,
+            username: "john",
+            password: "changeme"
+        },
+        {
+            userId: 2,
+            username: "maria",
+            password: "guess"
+        }
+    ];
 
-    async findUser(email: string): Promise<any | undefined> {
-        // Need to be connected to prisma to validate with Database
-        return this.prisma.user.findUnique({ where: { email } });
+    async findOne(
+        username: string
+    ): Promise<User | undefined> {
+        console.log("Hi");
+        return this.users.find(
+            (user) => user.username === username
+        );
     }
 }
