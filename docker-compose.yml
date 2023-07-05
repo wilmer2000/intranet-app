@@ -6,11 +6,12 @@ services:
     ports: # Port binding to host from docker container
       - "3000:3000" # Bind port 3000 of host to 3000 of container
     container_name: frontend-docker
-    restart: always # What to do if container crashes
-    links:
-      - backend
+    working_dir: /usr/src/app
     volumes:
-      - intranet-app:/frontend/
+      - type: bind
+        source: ./frontend
+        target: /usr/src/app
+
   # Create backend container
   backend:
     # Create backend container
@@ -18,15 +19,19 @@ services:
     ports:
       - "8080:8080"
     container_name: backend-docker
-    restart: always
+    working_dir: /usr/src/app
     links:
-      - db
+      - database
     depends_on:
-      - db
+      - database
     volumes:
-      - intranet-app:/backend/
+      - type: bind
+        source: ./backend
+        target: /usr/src/app
+      - /usr/src/app/node_modules
+
   # Create database container
-  db:
+  database:
     image: postgres:13-alpine3.18
     container_name: database-docker
     restart: always
@@ -38,6 +43,7 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
     volumes:
       - postgres-db:${POSTGRES_DATA_DIR}
+
+# Volumes
 volumes:
   postgres-db:
-  intranet-app:
