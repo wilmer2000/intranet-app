@@ -31,18 +31,17 @@ services:
 #      - /usr/src/app/node_modules
 
   # Create database container
-  database:
+  postgres:
     image: postgres:13-alpine3.18
-    container_name: database-docker
     restart: always
-    ports:
-      - "5432:5432"
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB}
     volumes:
       - postgres-db:${POSTGRES_DATA_DIR}
+    ports:
+      - "5432:5432"
 
 # Volumes
 volumes:
