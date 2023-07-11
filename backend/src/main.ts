@@ -6,20 +6,27 @@ import { PrismaClientExceptionFilter } from './prisma-client-exception/prisma-cl
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  // Set Pipes
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
+
+  // Set Interceptors
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 
-  const config = new DocumentBuilder()
-    .setTitle('Median')
-    .setDescription('The Median API description')
-    .setVersion('0.1')
-    .build();
-
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
-
+  // Set Prisma Client
   const { httpAdapter } = app.get(HttpAdapterHost);
   app.useGlobalFilters(new PrismaClientExceptionFilter(httpAdapter));
+
+  // Swagger configuration
+  const config = new DocumentBuilder()
+    .setTitle('Intranet')
+    .setDescription('Intranet API description')
+    .setVersion('0.1')
+    .addBearerAuth()
+    .build();
+  // Swagger init
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
 
   await app.listen(3000);
 }
