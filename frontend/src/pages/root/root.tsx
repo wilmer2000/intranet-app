@@ -1,4 +1,4 @@
-import {Outlet} from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import "./root.scss";
 
 // Components
@@ -10,17 +10,17 @@ import Navbar from "../../components/nav-bar/nav-bar.tsx";
 function Root() {
     return (
         <main className="app-separator-size">
-            <Header/>
+            <Header />
             <Container>
                 <div className="col-3">
                     <div className="row">
-                        <Avatar/>
-                        <Navbar/>
+                        <Avatar />
+                        <Navbar />
                     </div>
                 </div>
                 <div className="col-9">
                     <div className="row">
-                        <Outlet/>
+                        <Outlet />
                     </div>
                 </div>
             </Container>
