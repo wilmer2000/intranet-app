@@ -3,7 +3,7 @@ import {createBrowserRouter} from "react-router-dom";
 import Root from "../pages/root/root.tsx";
 import HomePage from "../pages/employer/home/home-page.tsx";
 import ProfilePage from "../pages/employer/profile/profile-page.tsx";
-import OktanaPage from "../pages/employer/oktana/oktana-page.tsx";
+import CompanyPage from "../pages/employer/company/company-page.tsx";
 import HumanResourcesPage from "../pages/employer/human-resources/human-resources-page.tsx";
 import TrainingPage from "../pages/employer/training/training-page.tsx";
 import DeliveryPage from "../pages/employer/delivery/delivery-page.tsx";
@@ -24,8 +24,8 @@ export const router: RemixRouter = createBrowserRouter([
                 element: <ProfilePage/>
             },
             {
-                path: 'about-oktana',
-                element: <OktanaPage/>
+                path: 'about-company',
+                element: <CompanyPage/>
             },
             {
                 path: 'human-resources',

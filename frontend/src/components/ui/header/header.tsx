@@ -12,7 +12,7 @@ function Header() {
                 <div className="row align-items-center">
                     <div className="col-2">
                         <a className="navbar-brand" href="#">
-                            <img className="navbar-logo" src={logo} alt="Oktana Logo"/>
+                            <img className="navbar-logo" src={logo} alt="Company Logo"/>
                         </a>
                     </div>
                     <div className="col-7">
