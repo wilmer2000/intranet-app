@@ -1,6 +1,5 @@
-import {Router as RemixRouter} from "@remix-run/router";
-import {createBrowserRouter} from "react-router-dom";
-import Root from "../pages/root/root.tsx";
+import { Router as RemixRouter } from "@remix-run/router";
+import { createBrowserRouter } from "react-router-dom";
 import HomePage from "../pages/employer/home/home-page.tsx";
 import ProfilePage from "../pages/employer/profile/profile-page.tsx";
 import CompanyPage from "../pages/employer/company/company-page.tsx";
@@ -9,44 +8,50 @@ import TrainingPage from "../pages/employer/training/training-page.tsx";
 import DeliveryPage from "../pages/employer/delivery/delivery-page.tsx";
 import SupportPage from "../pages/employer/support/support-page.tsx";
 import LoginPage from "../pages/login/login-page.tsx";
+import App from "../pages/app/app.tsx";
 
 export const router: RemixRouter = createBrowserRouter([
     {
         path: "/",
-        element: <Root/>,
+        element: <App />,
         children: [
             {
-                element: <HomePage/>,
+                path: "/",
+                element: <App />,
                 index: true
             },
             {
-                path: 'profile',
-                element: <ProfilePage/>
+                element: <HomePage />,
+                index: true
             },
             {
-                path: 'about-company',
-                element: <CompanyPage/>
+                path: "profile",
+                element: <ProfilePage />
             },
             {
-                path: 'human-resources',
-                element: <HumanResourcesPage/>
+                path: "about-company",
+                element: <CompanyPage />
             },
             {
-                path: 'training',
-                element: <TrainingPage/>
+                path: "human-resources",
+                element: <HumanResourcesPage />
             },
             {
-                path: 'delivery',
-                element: <DeliveryPage/>
+                path: "training",
+                element: <TrainingPage />
             },
             {
-                path: 'support',
-                element: <SupportPage/>
+                path: "delivery",
+                element: <DeliveryPage />
+            },
+            {
+                path: "support",
+                element: <SupportPage />
             }
         ]
     },
     {
-        path: '/login',
-        element: <LoginPage/>
-    },
+        path: "/login",
+        element: <LoginPage />
+    }
 ]);
