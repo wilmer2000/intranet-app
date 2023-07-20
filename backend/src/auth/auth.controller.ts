@@ -12,6 +12,7 @@ export class AuthController {
   @Post('login')
   @ApiOkResponse({ type: AuthEntity })
   login(@Body() { email, password }: LoginDto) {
+    console.log('Login entrando', email, password);
     return this.authService.login(email, password);
   }
 }
