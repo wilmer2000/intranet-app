@@ -1,6 +1,6 @@
 npm-debug.log
 **/node_modules/*
-Dockerfile
+backend/Dockerfile_temp
 docker-compose.yml
 .dockerignore
 **README*

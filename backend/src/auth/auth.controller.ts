@@ -1,32 +1,18 @@
-import {
-    Body,
-    Controller,
-    Get,
-    HttpCode,
-    HttpStatus,
-    Post,
-    Request,
-    UseGuards
-} from "@nestjs/common";
-import { AuthGuard } from "./auth.guard";
-import { AuthService } from "./auth.service";
+import { Body, Controller, Post } from '@nestjs/common';
+import { AuthService } from './auth.service';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { AuthEntity } from './entity/auth.entity';
+import { LoginDto } from './dto/login.dto';
 
-@Controller("auth")
+@Controller('auth')
+@ApiTags('auth')
 export class AuthController {
-    constructor(private authService: AuthService) {}
+  constructor(private readonly authService: AuthService) {}
 
-    @HttpCode(HttpStatus.OK)
-    @Post("login")
-    signIn(@Body() signInDto: Record<string, any>) {
-        return this.authService.signIn(
-            signInDto.username,
-            signInDto.password
-        );
-    }
-
-    @UseGuards(AuthGuard)
-    @Get("profile")
-    getProfile(@Request() req) {
-        return req.user;
-    }
+  @Post('login')
+  @ApiOkResponse({ type: AuthEntity })
+  login(@Body() { email, password }: LoginDto) {
+    console.log('Login entrando', email, password);
+    return this.authService.login(email, password);
+  }
 }

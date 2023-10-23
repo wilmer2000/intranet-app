@@ -1,48 +1,47 @@
 version: '3.8'
 services:
   # Create frontend container
-  frontend: # Name of our service
-    build: ./frontend # path to dockerfile
-    ports: # Port binding to host from docker container
-      - "3000:3000" # Bind port 3000 of host to 3000 of container
-    container_name: frontend-docker
-    working_dir: /usr/src/app
-    volumes:
-      - type: bind
-        source: ./frontend
-        target: /usr/src/app
-
-  # Create backend container
-  backend:
-    # Create backend container
-    build: ./backend
-    ports:
-      - "8080:8080"
-    container_name: backend-docker
-    working_dir: /usr/src/app
-    links:
-      - database
-    depends_on:
-      - database
-    volumes:
-      - type: bind
-        source: ./backend
-        target: /usr/src/app
-      - /usr/src/app/node_modules
+#  frontend: # Name of our service
+#    build: ./frontend # path to dockerfile
+#    ports: # Port binding to host from docker container
+#      - "3000:3000" # Bind port 3000 of host to 3000 of container
+#    container_name: frontend-docker
+#    working_dir: /usr/src/app
+#    volumes:
+#      - type: bind
+#        source: ./frontend
+#        target: /usr/src/app
+#
+#  # Create backend container
+#  backend:
+#    # Create backend container
+#    build: ./backend
+#    ports:
+#      - "8080:8080"
+#    container_name: backend-docker
+#    working_dir: /usr/src/app
+#    links:
+#      - database
+#    depends_on:
+#      - database
+#    volumes:
+#      - type: bind
+#        source: ./backend
+#        target: /usr/src/app
+#      - /usr/src/app/node_modules
 
   # Create database container
-  database:
+  postgres:
     image: postgres:13-alpine3.18
-    container_name: database-docker
     restart: always
-    ports:
-      - "5432:5432"
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB}
     volumes:
       - postgres-db:${POSTGRES_DATA_DIR}
+    ports:
+      - "5432:5432"
 
 # Volumes
 volumes:
