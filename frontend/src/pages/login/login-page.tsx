@@ -26,12 +26,9 @@ export default function LoginPage() {
 
         const response = await loginUser(credentials);
 
-        if (response && "accessToken" in response) {
-            console.log(
-                "Success",
-                response.message,
-                "success"
-            );
+        if (response && response.data && response.data.accessToken) {
+            //TODO set token to database
+
         } else {
             console.log(
                 "Failed",
@@ -58,10 +55,8 @@ export default function LoginPage() {
                     }
                 }
             )
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
+            .then((response) => response)
+            .catch((error) => {
                 console.log(error);
             });
     }

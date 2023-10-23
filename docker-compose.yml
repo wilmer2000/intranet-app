@@ -1,34 +1,31 @@
 version: '3.8'
 services:
   # Create frontend container
-#  frontend: # Name of our service
-#    build: ./frontend # path to dockerfile
-#    ports: # Port binding to host from docker container
-#      - "3000:3000" # Bind port 3000 of host to 3000 of container
-#    container_name: frontend-docker
-#    working_dir: /usr/src/app
-#    volumes:
-#      - type: bind
-#        source: ./frontend
-#        target: /usr/src/app
-#
-#  # Create backend container
-#  backend:
-#    # Create backend container
-#    build: ./backend
-#    ports:
-#      - "8080:8080"
-#    container_name: backend-docker
-#    working_dir: /usr/src/app
-#    links:
-#      - database
-#    depends_on:
-#      - database
-#    volumes:
-#      - type: bind
-#        source: ./backend
-#        target: /usr/src/app
-#      - /usr/src/app/node_modules
+  frontend:
+    build: ./frontend
+    ports:
+      - "8000:8000"
+    container_name: frontend-docker
+    working_dir: /usr/src/app
+    volumes:
+      - ./frontend:/usr/src/app/frontend
+      - /usr/src/app/frontend/node_modules
+    tty: true
+
+  # Create backend container
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    container_name: backend-docker
+    working_dir: /usr/src/app
+    links:
+      - database
+    depends_on:
+      - database
+    volumes:
+      - ./backend:/usr/src/app/frontend
+      - /usr/src/app/backend/node_modules
 
   # Create database container
   postgres:

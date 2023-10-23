@@ -7,6 +7,13 @@ export default defineConfig(({ mode }) => {
     const API_BASE_URL = env.INTRANET_API_URL;
     console.log(API_BASE_URL);
     return {
-        plugins: [react()]
+        plugins: [react()],
+        server: {
+            host: true,
+            port: 8000,
+            watch: {
+                usePolling: true
+            }
+        }
     };
 });
