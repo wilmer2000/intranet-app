@@ -1,4 +1,4 @@
-FROM node:18-alpine AS development
+FROM node:20-alpine
 
 WORKDIR /usr/src/app/frontend
 
@@ -9,16 +9,10 @@ RUN apk add --no-cache libc6-compat
 COPY package*.json ./
 
 RUN npm install
-RUN npm install -g @angular/cli
 
 COPY . .
 
-EXPOSE 4200
-
-#CMD ng serve
+EXPOSE 8000
 
 CMD ["npm", "run", "dev"]
-
-#CMD ["ng", "serve", "--host 0.0.0.0", "--port 4200"]
-
 

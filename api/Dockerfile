@@ -1,20 +1,18 @@
 FROM node:20-alpine
 
-WORKDIR /usr/src/app/backend
+WORKDIR /usr/src/app/api
 
 # system package deps
 RUN apk update && apk upgrade
 RUN apk add --no-cache libc6-compat
 
 COPY package*.json ./
-COPY tsconfig.build.json ./
-COPY tsconfig.json ./
+COPY tsconfig*.json ./
 
-RUN npm install
+RUN npm ci
 
 COPY . .
 
-EXPOSE 8000
-
 CMD ["npm", "run", "start:dev"]
 
+EXPOSE 3000
